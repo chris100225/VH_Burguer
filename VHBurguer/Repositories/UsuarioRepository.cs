@@ -32,7 +32,7 @@ namespace VHBurguer.Repositories
         return _context.Usuario.Any(usuario=>usuario.Email == email);
         }
 
-        public void AdicionarUsuario(Usuario usuario)
+        public void Adicionar(Usuario usuario)
         {
             _context.Usuario.Add(usuario);
             _context.SaveChanges();

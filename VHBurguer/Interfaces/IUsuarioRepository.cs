@@ -13,7 +13,7 @@ namespace VHBurguer.Interfaces
         void Adicionar(Usuario usuario);
 
         void Atualizar(Usuario usuario);
-        void Remover(int id)
+        void Remover(int id);
 
     }
 }

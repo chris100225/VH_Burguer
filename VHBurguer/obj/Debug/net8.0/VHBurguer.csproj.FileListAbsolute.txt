@@ -141,3 +141,4 @@ C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\refint\VHBurgu
 C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\VHBurguer.pdb
 C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\VHBurguer.genruntimeconfig.cache
 C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\ref\VHBurguer.dll
+C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\VHBurguer.sourcelink.json
