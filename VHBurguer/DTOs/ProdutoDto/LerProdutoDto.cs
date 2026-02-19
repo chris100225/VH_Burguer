@@ -14,12 +14,15 @@ namespace VHBurguer.DTOs.ProdutoDto
 
         public bool? StatusProduto { get; set; }
 
+        // categorias 
         public List<int> CategoriaIds { get; set; } = new();
-        public List<string> Categorias { get; set; } = new();
+        public List<string> Categoria { get; set; } = new();
 
+        //usuario que cadastrou
         public int? UsuarioID { get; set; }
         public string? UsuarioNome { get; set; }
         public string? UsuarioEmail { get; set; }
+
 
     }
 }
