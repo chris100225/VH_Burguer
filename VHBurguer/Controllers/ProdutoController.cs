@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using VHBurguer.Applications.Services;
@@ -60,6 +61,58 @@ namespace VHBurguer.Controllers
             catch (Exception ex)
             {
                 return NotFound(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Consumes("multipart/form-data")]
+        [Authorize]
+        public ActionResult Adicionar([FromForm] CriarProdutoDto produtoDto)
+        {
+            try
+            {
+                int usuarioId = ObterUsuarioIdLogado();
+                _service.Adicionar(produtoDto, usuarioId);
+                return StatusCode(201);
+            }
+            catch (DomainException ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+
+        [Consumes("multipart/form-data")]
+        [Authorize]
+
+        public ActionResult Atualizar(int id, [FromForm] AtualizarProdutoDto produtoDto)
+        {
+            try
+            {
+                _service.Atualizar(id, produtoDto);
+                return NoContent();
+
+            }catch(DomainException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize]
+
+        public ActionResult Remover(int id) {
+            try
+            {
+                _service.Remover(id);
+                return NoContent();
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(ex.Message);
+                throw;
             }
         }
     }

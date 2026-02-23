@@ -27,7 +27,7 @@ namespace VHBurguer.Applications.Services
 
         public TokenDto Login(LoginDto loginDto)
         {
-            Usuario usuario = _repository.ObterPorEmail(loginDto.Email);
+            Usuario? usuario = _repository.ObterPorEmail(loginDto.Email);
 
             if (usuario==null)
             {

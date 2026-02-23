@@ -8,7 +8,7 @@
 
         public IFormFile Imagem { get; set; } = null!;
 
-        public List<int> Categoria { get; set; } = new();
+        public List<int> CategoriaIds { get; set; } = new();
 
         public bool? StatusProduto { get; set; }
     }

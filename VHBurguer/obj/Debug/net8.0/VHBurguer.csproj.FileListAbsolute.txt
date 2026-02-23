@@ -142,3 +142,4 @@ C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\VHBurguer.pdb
 C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\VHBurguer.genruntimeconfig.cache
 C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\ref\VHBurguer.dll
 C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\obj\Debug\net8.0\VHBurguer.sourcelink.json
+C:\Users\42332992820\Desktop\VHBurguer\VHBurguer\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -2,9 +2,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using VHBurguer.Applications.Autenticacao;
+using VHBurguer.Applications.Services;
 using VHBurguer.Contexts;
 using VHBurguer.Interfaces;
 using VHBurguer.Repositoreis;
+using VHBurguer.Repositoreis.UsuarioDTO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,11 +18,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<VH_BurguerContext>(options => options.UseSqlServer
-    (builder.Configuration.GetConnectionString("Default")));
+//chamar nossa conexão com o banco aqui na program
+builder.Services.AddDbContext<VH_BurguerContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("default")));
 
+// Usuário
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddScoped<UsuarioRepository>();
+builder.Services.AddScoped<UsuarioService>();
+
+// produto
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped<ProdutoService>();
+
+// jWT
+builder.Services.AddScoped<GeradorTokenJwt>();
+builder.Services.AddScoped<AutenticacaoService>();
 
 // Configura o sistema de autenticação da aplicação.
 // Aqui estamos dizendo que o tipo de autenticação padrão será JWT Bearer.
@@ -76,6 +88,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
