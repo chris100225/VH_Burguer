@@ -5,6 +5,7 @@ using System.Text;
 using VHBurguer.Applications.Autenticacao;
 using VHBurguer.Applications.Services;
 using VHBurguer.Contexts;
+using VHBurguer.DTOs.Categoriadto;
 using VHBurguer.Interfaces;
 using VHBurguer.Repositoreis;
 using VHBurguer.Repositoreis.UsuarioDTO;
@@ -29,6 +30,10 @@ builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<ProdutoService>();
 
+// categoria
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<CategoriaService>();
+
 // jWT
 builder.Services.AddScoped<GeradorTokenJwt>();
 builder.Services.AddScoped<AutenticacaoService>();
@@ -38,7 +43,7 @@ builder.Services.AddScoped<AutenticacaoService>();
 // Ou seja: a API vai esperar receber um Token JWT nas requisições.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
-    // Adiciona o suporte para autenticação usando JWT.
+    // Adiciona o suporte para autenticação usando JWT. 
     .AddJwtBearer(options =>
     {
         // Lê a chave secreta definida no appsettings.json.

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VHBurguer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8ec550ddfb28603f4c2b24a7c7e441da3a92f09")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d8892ae793ee480c552403fefcdd4c500ad67d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("VHBurguer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VHBurguer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

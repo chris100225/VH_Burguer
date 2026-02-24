@@ -39,7 +39,7 @@ namespace VHBurguer.DTOs.Categoriadto
         }
 
         public void Atualizar(Categoria categoria) {
-            Categoria.categoriaBanco=_context.Categoria.FirstOrDefault(c=>c.CategoriaID);
+            Categoria categoriaBanco=_context.Categoria.FirstOrDefault(c=>c.CategoriaID== categoria.CategoriaID);
 
             if (categoriaBanco==null)
             {
@@ -51,7 +51,7 @@ namespace VHBurguer.DTOs.Categoriadto
         }
         public void Remover(int id)
         {
-            Categoria categoriaBanco = _context.Categoria.FirstOrDefault(c=>CategoriaId==id);
+            Categoria categoriaBanco = _context.Categoria.FirstOrDefault(c=>c.CategoriaID==id);
 
             if (categoriaBanco == null)
             {

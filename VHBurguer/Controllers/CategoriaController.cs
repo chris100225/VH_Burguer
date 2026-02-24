@@ -51,23 +51,6 @@ namespace VHBurguer.Controllers
             }
         }
 
-        [HttpPost]
-        [Authorize]
-
-        public ActionResult Adicionar(CriarCategoriaDto criarDto)
-        {
-            try
-            {
-                _service.Adicionar(criarDto);
-                return StatusCode(201);
-            }
-            catch (DomainException ex)
-            {
-
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpPut("{id}")]
         [Authorize]
 
