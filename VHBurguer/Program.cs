@@ -9,6 +9,7 @@ using VHBurguer.DTOs.Categoriadto;
 using VHBurguer.Interfaces;
 using VHBurguer.Repositoreis;
 using VHBurguer.Repositoreis.UsuarioDTO;
+using VHBurguer.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,14 @@ builder.Services.AddScoped<ProdutoService>();
 // categoria
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<CategoriaService>();
+
+// promocao
+builder.Services.AddScoped<IPromocaoRepository, PromocaoRepository>();
+builder.Services.AddScoped<PromocaoService>();
+
+// log de alteracao
+builder.Services.AddScoped<ILogAlteracaoProdutoRepository, logAlteracaoProdutoRepository>();
+builder.Services.AddScoped<LogAlteracaoProdutoService>();
 
 // jWT
 builder.Services.AddScoped<GeradorTokenJwt>();

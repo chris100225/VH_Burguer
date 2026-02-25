@@ -1,4 +1,5 @@
-﻿using VHBurguer.Applications.Regras;
+﻿using System.Diagnostics;
+using VHBurguer.Applications.Regras;
 using VHBurguer.Domains;
 using VHBurguer.DTOs.PromocaoDto;
 using VHBurguer.Exceptions;
@@ -16,7 +17,7 @@ namespace VHBurguer.Applications.Services
             _repository = repository;
         }
 
-        public List<Promocao> Listar()
+        public List<LerPromocaoDto> Listar()
         {
             List<Promocao> promocoes = _repository.Listar();
 
@@ -73,6 +74,39 @@ namespace VHBurguer.Applications.Services
             };
 
             _repository.Adicionar(promocao);
+        }
+
+        public void Atualizar(int id, CriarPromocaoDto promocaoDto)
+        {
+            ValidarNome(promocaoDto.Nome);
+            Promocao promocaoBanco=_repository.ObterPorId(id);
+
+            if (promocaoBanco==null)
+            {
+                throw new DomainException("Promocao não encontrada");
+            }
+
+            if (_repository.NomeExiste(promocaoDto.Nome,promocaoIdAtual:id))
+            {
+                throw new DomainException("Já existe outra promocao com esse nome");
+            }
+
+            promocaoBanco.Nome = promocaoDto.Nome;
+            promocaoBanco.DataExpiracao = promocaoDto.DataExpiracao;
+            promocaoBanco.StatusPromocao= promocaoDto.StatusPromocao;
+
+            _repository.Atualizar(promocaoBanco);
+        }
+
+        public void Remover(int id) {
+            Promocao promocaoBanco = _repository.ObterPorId(id);
+
+            if (promocaoBanco==null)
+            {
+                throw new DomainException("promocao nao encontrada");
+            }
+
+            _repository.Remover(id);
         }
     }
 }
