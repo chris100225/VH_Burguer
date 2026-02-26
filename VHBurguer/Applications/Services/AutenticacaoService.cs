@@ -19,8 +19,8 @@ namespace VHBurguer.Applications.Services
 
         private static bool VerificarSenha(string senhaDigitada, byte[] senhaHashBanco)
         {
-            using var sha=System.Security.Cryptography.SHA256.Create();
-            var hashDigitado=sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(senhaDigitada));
+            using var sha = System.Security.Cryptography.SHA256.Create();
+            var hashDigitado = sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(senhaDigitada));
 
             return hashDigitado.SequenceEqual(senhaHashBanco);
         }
@@ -29,7 +29,7 @@ namespace VHBurguer.Applications.Services
         {
             Usuario? usuario = _repository.ObterPorEmail(loginDto.Email);
 
-            if (usuario==null)
+            if (usuario == null)
             {
                 throw new DomainException("Email ou senha inválidos");
             }
@@ -37,6 +37,10 @@ namespace VHBurguer.Applications.Services
             if (!VerificarSenha(loginDto.Senha, usuario.Senha))
             {
                 throw new DomainException("Email ou senha inválidos");
+            }
+            if (usuario.StatusUsuario == null)
+            {
+                throw new DomainException("Usuário inativo");
             }
 
             var token = _tokenJwt.GerarToken(usuario);
