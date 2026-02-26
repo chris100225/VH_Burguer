@@ -121,7 +121,7 @@ namespace VHBurguer.Repositoreis.UsuarioDTO
         {
             Produto? produto = _context.Produto.FirstOrDefault(p => p.ProdutoID == id);
 
-            if (produto != null)
+            if (produto == null)
             {
                 return;
             }

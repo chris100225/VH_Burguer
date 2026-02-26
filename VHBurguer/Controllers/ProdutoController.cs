@@ -112,7 +112,6 @@ namespace VHBurguer.Controllers
             catch (DomainException ex)
             {
                 return BadRequest(ex.Message);
-                throw;
             }
         }
     }
