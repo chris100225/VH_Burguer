@@ -24,5 +24,6 @@ namespace VHBurguer.DTOs.ProdutoDto
         public string? UsuarioEmail { get; set; }
 
 
+
     }
 }
